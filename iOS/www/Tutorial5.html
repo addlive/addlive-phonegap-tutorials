@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css"/>
+  <title>AddLive PhoneGap Demo - Local video</title>
+</head>
+<body class="Tutorial5">
+
+<!--  id="localRenderer" is an unique id use it also in AddLive.m line 737
+      to avoid to add it in the scrollview object -->
+<div id="localRenderer"></div>
+
+<!--  we use iscroll in order to get the correct values for x, y, width and
+      height of the video but the scroll you see and use in the app is being
+      coded natively in AddLive.m-->
+<div id="wrapper">
+  <div id="scroller">
+    <ul id="renderers">‚
+    </ul>
+  </div>
+</div>
+
+<div class="ctrl-box">
+
+  <div class="pull-left">
+    <input id="scopeIdInp" value="" type="text" />
+    <button id="connectBtn" >Connect</button>
+    <button id="disconnectBtn" class="hidden-on-start">Disconnect</button>
+    <button id="toggleCamBtn">Toggle Cam</button>
+    <button id="enableAudioBtn" class="hidden-on-start">Enable Audio</button>
+    <button id="disableAudioBtn" class="hidden-on-start">Disable Audio</button>
+    <button id="enableVideoBtn" class="hidden-on-start">Enable Video</button>
+    <button id="disableVideoBtn" class="hidden-on-start">Disable Video</button>
+  </div>
+
+  <div class="clearer"></div>
+
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/tutorial5.js"></script>
+<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="js/iscroll/iscroll.js"></script>
+<script type="text/javascript" src="js/addlive-sdk.js"></script>
+<script type="text/javascript" src="js/addlive-mobile-sdk.js"></script>
+
+</body>
+</html>
