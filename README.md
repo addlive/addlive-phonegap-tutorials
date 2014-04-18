@@ -1,4 +1,4 @@
-# AddLive iOS SDK Tutorials
+# AddLive iOS Phonegap SDK Tutorials
 
 This repository contains a sample project showcasing the basics of the AddLive
 iOS PhoneGap
@@ -11,7 +11,7 @@ SDK.
 
 ## Building the application
 
-To use the application you need to obtain AddLive iOS SDK and the PhoneGap
+To use the application, you need to obtain AddLive iOS SDK and the PhoneGap
 plug-in sources. To obtain those visit http://www.addlive.com.
 
 Once you have all required components, copy the AddLive.framework to the iOS
