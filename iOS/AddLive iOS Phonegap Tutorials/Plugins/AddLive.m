@@ -254,7 +254,7 @@
   if (![descrRaw objectForKey:@"authDetails"]) {
     // TODO report an error here
   }
-  NSLog(@"[iOS]Parsing quth details");
+  NSLog(@"[iOS]Parsing auth details");
   ALAuthDetails *authDetails = [ALAuthDetails alloc];
   NSDictionary *authDetailsRaw = [descrRaw objectForKey:@"authDetails"];
   authDetails.expires = [[authDetailsRaw objectForKey:@"expires"] longLongValue];
@@ -336,7 +336,7 @@
 - (void)unpublish:(CDVInvokedUrlCommand *)command {
   NSString *scopeId = [command.arguments objectAtIndex:0];
   NSString *mediaType = [command.arguments objectAtIndex:1];
-  NSLog(@"[iOS]Calling publish for scope: %@ and media: %@", scopeId, mediaType);
+  NSLog(@"[iOS]Calling unpublish for scope: %@ and media: %@", scopeId, mediaType);
   _VoidResponder *adapter = [[_VoidResponder alloc] initWithCommand:command delegate:self.commandDelegate methodName:@"unpublish"];
   ALResponder *responder = [[ALResponder alloc] initWithSelector:@selector(result:) withObject:adapter];
   [_service unpublish:scopeId what:mediaType responder:responder];
@@ -563,7 +563,7 @@ static NSMutableDictionary *_pendingCalls;
   [e setValue:@"speechActivity" forKey:@"_eventType"];
   [e setObject:event.activeSpeakers forKey:@"activeSpeakers"];
   [e setValue:event.scopeId forKey:@"scopeId"];
-  [e setObject:speechActivity forKey:@"speechActivity"];
+    [e setObject:speechActivity forKey:@"speechActivity"];
   [self _dispatchEvent:e];
 }
 

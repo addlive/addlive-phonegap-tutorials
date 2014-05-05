@@ -123,7 +123,7 @@
         // Renders a screen share.
         onUserScreenShared(e);
 
-      } else {
+      } else if(!e.isConnected) {
 
         // Disposes a renderer.
         console.log("User with id: " + e.userId + ' left the media scope');
@@ -156,8 +156,14 @@
           }
           break;
         case ADL.MediaType.SCREEN:
-          newScreenSharedSize = true;
-          userIdWithNewScreenSize = e.userId;
+          if(e.screenPublished) {
+            if($("#" + id).length == 0) {
+              onUserScreenShared(e);
+            } else {
+              newScreenSharedSize = true;
+              userIdWithNewScreenSize = e.userId;
+            }
+          }
           break;
       }
     };
@@ -178,10 +184,7 @@
         $('#'+id).css(fitDims(e.width, e.height, 320, 480));
 
         // Render the sink if the video stream is being published.
-        ADL.renderSink({
-          sinkId:e.sinkId,
-          containerId:id
-        });
+        ADL.renderSink({sinkId: e.sinkId, containerId: id});
 
         newScreenSharedSize = false;
         userIdWithNewScreenSize = "";
