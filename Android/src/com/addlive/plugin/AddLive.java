@@ -216,22 +216,21 @@ public class AddLive extends CordovaPlugin {
         	    );
     	    return true;
         } else if (action.equals("getVideoCaptureDevice")) {
-        	
-        	/*ADL.getService().getVideoCaptureDevice(new Responder<String>() {
-				@Override
-				public void resultHandler(String device) {
-    	    		Log.d(LOG_TAG, "[Android] getVideoCaptureDevice success");
-    		    	_callback(Status.OK, device);
-				}
 
-	    		@Override
-	    		public void errHandler(int errCode, String errMessage){
-    	    		Log.e(LOG_TAG, "[Android] getVideoCaptureDevice failed");
-    		    	_callback(Status.ERROR);
-	    		}
-	    	});*/ 
-
-	    	_callback(Status.OK, VideoCaptureDevice.BACK_CAMERA.getId());
+        	ADL.getService().getVideoCaptureDevice(new Responder<String>() {
+					@Override
+					public void resultHandler(String device) {
+        	    		Log.d(LOG_TAG, "[Android] getVideoCaptureDevice success");
+        		    	_callback(Status.OK, device);
+					}
+					@Override
+					public void errHandler(int errCode, String errMessage) {
+        	    		Log.e(LOG_TAG, "[Android] getVideoCaptureDevice failed");
+        	    		Log.e(LOG_TAG, "[Android] errCode: " + errCode + " - " +
+        	    						"errMessage: " + errMessage);
+        		    	_callback(Status.ERROR);
+					}
+    	    	});
     	    return true;
         } else if (action.equals("startLocalVideo")) {
 

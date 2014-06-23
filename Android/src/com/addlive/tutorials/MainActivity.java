@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutorService;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity implements CordovaInterface {
         
         // Phonegap webview
         CordovaWebView cordovaWV = (CordovaWebView) findViewById(R.id.cordovaWebView);
-        cordovaWV.loadUrl("file:///android_asset/www/Tutorial7.html");
+        cordovaWV.loadUrl("file:///android_asset/www/Tutorial6.html");
         
         // To avoid local surface view black flashes. Explanation here:
         // http://stackoverflow.com/questions/8772862/surfaceview-flashes-black-on-load

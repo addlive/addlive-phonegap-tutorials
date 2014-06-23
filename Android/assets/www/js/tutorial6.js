@@ -26,8 +26,7 @@
       /**
        * @type {ADL.MediaConnection}
        */
-          activeConnection;
-
+      activeConnection;
 
   function _onDeviceReady() {
     Log = ADL.Log;
