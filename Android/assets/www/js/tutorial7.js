@@ -20,7 +20,7 @@
   var localRenderEnabled = false,
       previewSinkId,
       availCams = [], currentCamIdx,
-      newScreenSharedSize = false,
+      screenSharedSinkId,
       userIdWithNewScreenSize,
       videoSinkIdArray = [],
       speechActivityArray = [],
@@ -160,8 +160,23 @@
           }
           break;
         case ADL.MediaType.SCREEN:
-          newScreenSharedSize = true;
-          userIdWithNewScreenSize = e.userId;
+          if(e.screenPublished){
+            screenSharedSinkId = e.screenSinkId;
+            userIdWithNewScreenSize = e.userId;
+          } else if (!e.screenPublished && e.videoPublished) {
+            // Dispose previous render
+            ADL.disposeRenderer(id);
+
+            $.each(videoSinkIdArray, function(ev, video){
+              if(video.userId == e.userId){
+                ADL.renderSink({containerId: id, sinkId: video.videoSinkId});
+              }
+            });
+
+          } else {
+            // Dispose previous render
+            ADL.disposeRenderer(id);
+          }
           break;
       }
     };
@@ -170,7 +185,7 @@
     listener.onVideoFrameSizeChanged = function (e) {
 
       // If the change is related to a screen share feed
-      if(newScreenSharedSize){
+      if(e.sinkId === screenSharedSinkId){
 
         // Setting the widget id.
         var id = 'renderingWidget' + userIdWithNewScreenSize;
@@ -187,7 +202,7 @@
           containerId:id
         });
 
-        newScreenSharedSize = false;
+        screenSharedSinkId = null;
         userIdWithNewScreenSize = "";
       }
     };

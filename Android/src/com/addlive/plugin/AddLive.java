@@ -601,13 +601,15 @@ public class AddLive extends CordovaPlugin {
 		      	Log.d(LOG_TAG, "[Android] onMediaStreamEvent Listener triggered");
 		      	
 		      	User remoteUser = userMap.get(e.getUserId());
-		      	if(!remoteUser.videoSinkId.equals(e.getVideoSinkId()) && 
-		      											e.isVideoPublished()) { 
+		      	if(!remoteUser.videoSinkId.equals(e.getVideoSinkId()) &&
+                                                    e.isVideoPublished() &&
+                                                    !e.getVideoSinkId().equals("")) {
 		      		remoteUser.videoSinkId = e.getVideoSinkId();
 		      		remoteUser.isFeeding = false;
 		      	}
-		      	if(!remoteUser.screenSinkId.equals(e.getScreenSinkId()) && 
-		      											e.isScreenPublished()) {
+		      	if(!remoteUser.screenSinkId.equals(e.getScreenSinkId()) &&
+                                                    e.isScreenPublished() &&
+                                                    !e.getScreenSinkId().equals("")) {
 		      		remoteUser.screenSinkId = e.getScreenSinkId();
 		      		remoteUser.isFeeding = false;
 		      	}
